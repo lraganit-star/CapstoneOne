@@ -1,0 +1,14 @@
+data filter=lfs diff=lfs merge=lfs -text
+data/hlsp_hugs_hst_acs-wfc_ngc0104_f435w_v1_stack-0010s.fits.bz2 filter=lfs diff=lfs merge=lfs -text
+data/hlsp_hugs_hst_acs-wfc_ngc0104_f606w_v1_stack-0050s.fits.bz2 filter=lfs diff=lfs merge=lfs -text
+data/hlsp_hugs_hst_acs-wfc_ngc0104_f814w_v1_stack-0003s.fits.bz2 filter=lfs diff=lfs merge=lfs -text
+data/hlsp_hugs_hst_wfc3-uvis-acs-wfc_ngc0104_multi_v1_catalog-meth1.txt filter=lfs diff=lfs merge=lfs -text
+data/hlsp_hugs_hst_wfc3-uvis-acs-wfc_ngc0104_multi_v1_catalog-meth1.txt~ filter=lfs diff=lfs merge=lfs -text
+data/hlsp_hugs_hst_wfc3-uvis-acs-wfc_ngc0104_multi_v1_catalog-meth2.txt filter=lfs diff=lfs merge=lfs -text
+data/hlsp_hugs_hst_wfc3-uvis_ngc0104_f336w_v1_stack-0225s.fits.bz2 filter=lfs diff=lfs merge=lfs -text
+data/hlsp_hugs_hst_acs-wfc_ngc0104_f435w_v1_stack-0010s.fits filter=lfs diff=lfs merge=lfs -text
+data/hlsp_hugs_hst_acs-wfc_ngc0104_f606w_v1_stack-0003s.fits.bz2 filter=lfs diff=lfs merge=lfs -text
+data/hlsp_hugs_hst_acs-wfc_ngc0104_f814w_v1_stack-0050s.fits.bz2 filter=lfs diff=lfs merge=lfs -text
+data/hlsp_hugs_hst_wfc3-uvis-acs-wfc_ngc0104_multi_v1_catalog-meth3.txt filter=lfs diff=lfs merge=lfs -text
+data/hlsp_hugs_hst_wfc3-uvis_ngc0104_f275w_v1_stack-0348s.fits.bz2 filter=lfs diff=lfs merge=lfs -text
+data/hlsp_hugs_hst_acs-wfc_ngc0104_f435w_v1_stack-0100s.fits.bz2 filter=lfs diff=lfs merge=lfs -text
