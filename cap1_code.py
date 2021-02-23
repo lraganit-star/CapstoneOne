@@ -5,9 +5,6 @@ from mpl_toolkits.mplot3d import Axes3D
 
 #current steps I'm going to do
 #
-#reduce to main sequence
-### change axis 
-#
 #clean out non ms stars(binaries, wd, etc.)
 ### use stats to determine probability of each star is binary or not
 #
@@ -40,6 +37,9 @@ df_small = pd.DataFrame({'ID':id_s, 'data_275':data_275, 'data_336': data_336, '
 df_big = pd.DataFrame({'ID': remove_R(id_b), 'Membership_probability':mem_prob})
 
 df = pd.merge(left=df_small, right=df_big, how='left', left_on='ID', right_on='ID')
+df = df[(df[['data_606','data_814']] <= 40).all(axis=1)]
+df = df[(df[['data_275','data_336']] >= 12.5).all(axis=1)]
+
 
 f275 = 13.35 +0.239
 f336 = 13.35 + 0.203
@@ -74,28 +74,39 @@ def sep_members(df):
     df.drop(rows.index, inplace=True)
     return df, df2
 
-def closest(lst1 = iso_606, lst2 = iso_814, data1 = data_606, data2 = data_814): 
-    iso_lst = lst1-lst2
-    data_lst = data1-data2
-    lst = []
-    for ms in iso_lst:
-        for data in data_lst:
-            lst.append(np.linalg.norm(ms - data))
-
-    return lst
-
-
-
 df1, df2 = sep_members(df)
+
+def ms_difference(lst1 = iso_606, lst2 = iso_814, data1 = df1['data_606'], data2 = df1['data_814']): 
+    iso_lst = np.asarray(lst1-lst2)
+    data_lst = data1-data2
+    
+    lst = []
+
+    for data in data_lst:
+        idx = (np.abs(iso_lst - data)).argmin()
+        lst.append(np.linalg.norm(iso_lst[idx] - data))
+
+    return np.asarray(lst)
+
+
+ms_delta_opt = ms_difference()
+ms_delta_UV = ms_difference(lst1 = iso_275, lst2 = iso_336, data1 = df1['data_275'], data2 = df1['data_336'])
+def binary_hist(opt = ms_delta_opt, uv = ms_delta_UV):
+    plt.hist((ms_delta_opt-ms_delta_UV), bins = 100)
+    plt.xlabel('Difference Between Optical and UV filters')
+    plt.ylabel('Number of Stars')
+    plt.yscale('log')
+    plt.show()
+
 
 def cmd275(filter1 = df1['data_275'], filter2 = df1['data_336'], filter1_b = df2['data_275'], filter2_b = df2['data_336'], iso1 = iso_275, iso2 = iso_336):
     
     plt.clf()
     #plt.scatter(filter1_b-filter2_b, filter1_b, color = 'grey', marker = '.', alpha = 0.5, label = 'Stars not in 47 Tuc')
-    plt.scatter(filter1-filter2, filter1, color= 'c', marker = '.', alpha = 0.5, label = 'Stars in 47 Tuc')
+    plt.scatter(filter1-filter2, filter2, color= 'c', marker = '.', alpha = 0.5, label = 'Stars in 47 Tuc')
     plt.plot(iso1-iso2, iso1, color = 'r', label = 'Main Sequence Model')
 
-    plt.axis([-1, 4, 15.5, 25.75])
+    #plt.axis([-1, 4, 15.5, 25.75])
     plt.gca().invert_yaxis()
     plt.title('Color-Magnitude Diagram in UV Filters')
     plt.xlabel('m${_{275}}$\N{MINUS SIGN}m${_{336}}$' , fontsize=20)
@@ -109,7 +120,7 @@ def cmd814(filter1 = df1['data_606'], filter2 = df1['data_814'], filter1_b = df2
     #plt.scatter(filter1_b-filter2_b, filter2_b, color = 'grey', marker = '.', alpha = 0.5, label = 'Stars not in 47 Tuc')
     plt.scatter(filter1-filter2, filter2, color= 'b', marker = '.', alpha = 0.5, label = 'Stars in 47 Tuc')
     plt.plot(iso1-iso2, iso2, color = 'r', label = 'Main Sequence model')
-    plt.axis([-5, 6, 8.25, 30])
+    #plt.axis([-5, 6, 8.25, 30])
     plt.title('Color-Magnitude Diagram in Optical Filters')
     plt.xlabel('m${_{606}}$\N{MINUS SIGN}m${_{814}}$' , fontsize=20)
     plt.ylabel('m${_{814}}$', fontsize=20)
@@ -122,7 +133,6 @@ def cmd814(filter1 = df1['data_606'], filter2 = df1['data_814'], filter1_b = df2
 plt.clf()
 #cmd275()
 #cmd814()
-
-print(len(closest()))
+binary_hist()
 
 
