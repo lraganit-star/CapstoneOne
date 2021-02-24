@@ -15,7 +15,8 @@ One of these GCs is 47 Tuc, also known as NGC 104. It is a massive GC that could
 
 ## You Can't Sit With Us
 
-![] ('CMD_optical.png')	
+![] (CMD_optical.png)	
+
 
 This is a Color-Magnitude Diagram. Every star that every gets measured by any telescope will eventually end up on here. The evolutionary cycle of stars has been studied for a long time now and depending on the mass of the star, we can predict how these stars move throughout the HR diagram as they age. Each star starts its life on the main sequence. The mass of the star determines the lifetime of a star on the main sequence. Which is why we'll be focusing on the main sequence. 
 
