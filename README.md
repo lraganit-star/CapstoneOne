@@ -9,7 +9,9 @@ One of these GCs is 47 Tuc, also known as NGC 104. It is a massive GC that could
 
 ## Objectives
 ~ Removing stars that are not within 47 Tuc
+
 ~ Using MS isochrones, reduce the amount of non-singular, non-MS stars
+
 ~ Determine width of MS in order to see the internal error of Hubble
 
 
