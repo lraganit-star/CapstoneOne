@@ -23,10 +23,16 @@ One of these GCs is 47 Tuc, also known as NGC 104. It is a massive GC that could
 This is a Color-Magnitude Diagram. Every star that every gets measured by any telescope will eventually end up on here. The evolutionary cycle of stars has been studied for a long time now and depending on the mass of the star, we can predict how these stars move throughout the HR diagram as they age. Each star starts its life on the main sequence. The mass of the star determines the lifetime of a star on the main sequence. Which is why we'll be focusing on the main sequence. 
 
 
-(Write process of how we chose which stars to remove here)
-
 ![](membership.png)
+
+
+This graph gives us the probability of each star being within 47 Tuc. We had put the cut off point at p = 0.5, where we had only accepted stars that had a higher than 50% probability of being within the GC. Take note that the y axis is measured is on a log scale.
+
+
 ![](sep_mem_from_nonmem.png)
+
+
+This is an image indicating which stars have been removed due to the probability of these stars being within 47 Tuc being below 50%. We can see that the width of the main sequence is decreased due to these stars taken out. 
 
 
 # Here Come the Isochrones
