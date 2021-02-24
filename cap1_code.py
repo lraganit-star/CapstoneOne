@@ -1,9 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from mpl_toolkits.mplot3d import Axes3D
 import scipy.stats as stats
-from sklearn import preprocessing
 
 #current steps I'm going to do
 #
@@ -87,28 +85,49 @@ def ms_difference(lst1 = iso_606, lst2 = iso_814, data1 = df1['data_606'], data2
     for data in data_lst:
         idx = (np.abs(iso_lst - data)).argmin()
         lst.append(np.linalg.norm(iso_lst[idx] - data))
+        df1['delta'] = np.linalg.norm(iso_lst[idx] - data)
 
     return np.asarray(lst)
 
 
-ms_delta_opt = ms_difference()
-ms_delta_UV = ms_difference(lst1 = iso_275, lst2 = iso_336, data1 = df1['data_275'], data2 = df1['data_336'])
-def binary_hist(opt = ms_delta_opt, uv = ms_delta_UV):
-    plt.hist((ms_delta_opt-ms_delta_UV), bins = 100)
+df1['ms_delta_opt'] = ms_difference()
+df1['ms_delta_UV'] = ms_difference(lst1 = iso_275, lst2 = iso_336, data1 = df1['data_275'], data2 = df1['data_336'])
+df1['opt-UV'] = df1['ms_delta_opt']- df1['ms_delta_UV']
+
+
+def sep_prob(df = df1):
+    df_g = df.loc[~((df['opt-UV'] < -0.2817938716083204) & (df['opt-UV']> 0.24665511360750217))].reset_index(drop=True)
+    #df_b = df.loc[~((df['opt-UV'] > -0.2817938716083204) & (df['opt-UV']< 0.24665511360750217))].reset_index(drop=True)
+    return df_g
+
+
+def binary_hist(opt = df1['ms_delta_opt'], uv = df1['ms_delta_UV']):
+    plt.hist((opt-uv), bins = 100)
+    #99 confidence
+    plt.axvline(-0.2817938716083204, color='k', linestyle='dashed', linewidth=1, label = 'Confidence interval = 0.99')
+    plt.axvline(0.24665511360750217, color='k', linestyle='dashed', linewidth=1)
     plt.xlabel('Difference Between Optical and UV filters')
     plt.ylabel('Number of Stars')
     plt.yscale('log')
+    plt.legend()
     plt.show()
 
+def conf_int(op = df1['ms_delta_opt'], uv = df1['ms_delta_UV'], conf = 0.99):
+    # (-0.21861938205432635, 0.18348062405350807) @95
+    # (-0.2817938716083204, 0.24665511360750217) @99
+    delta = op-uv
+    mean, sigma = np.mean(delta), np.std(delta)
+    inte = stats.norm.interval(conf, loc=mean, scale=sigma)
+    return inte
 
 def cmd275(filter1 = df1['data_275'], filter2 = df1['data_336'], filter1_b = df2['data_275'], filter2_b = df2['data_336'], iso1 = iso_275, iso2 = iso_336):
     
     plt.clf()
-    #plt.scatter(filter1_b-filter2_b, filter1_b, color = 'grey', marker = '.', alpha = 0.5, label = 'Stars not in 47 Tuc')
-    plt.scatter(filter1-filter2, filter2, color= 'c', marker = '.', alpha = 0.5, label = 'Stars in 47 Tuc')
+    
+    plt.scatter(filter1-filter2, filter1, color= 'c', marker = '.', alpha = 0.5, label = 'MS stars')
     plt.plot(iso1-iso2, iso1, color = 'r', label = 'Main Sequence Model')
-
-    #plt.axis([-1, 4, 15.5, 25.75])
+    #plt.scatter(filter1_b-filter2_b, filter1_b, color = 'k', marker = '.', alpha = 1, label = 'Non-singular stars')
+    plt.axis([-1, 4, 15.5, 25.75])
     plt.gca().invert_yaxis()
     plt.title('Color-Magnitude Diagram in UV Filters')
     plt.xlabel('m${_{275}}$\N{MINUS SIGN}m${_{336}}$' , fontsize=20)
@@ -119,10 +138,11 @@ def cmd275(filter1 = df1['data_275'], filter2 = df1['data_336'], filter1_b = df2
 def cmd814(filter1 = df1['data_606'], filter2 = df1['data_814'], filter1_b = df2['data_606'], filter2_b = df2['data_814'], iso1 = iso_606, iso2 = iso_814):
     
     plt.clf()
-    #plt.scatter(filter1_b-filter2_b, filter2_b, color = 'grey', marker = '.', alpha = 0.5, label = 'Stars not in 47 Tuc')
-    plt.scatter(filter1-filter2, filter2, color= 'b', marker = '.', alpha = 0.5, label = 'Stars in 47 Tuc')
+    plt.scatter(filter1-filter2, filter2, color= 'b', marker = '.', alpha = 0.5, label = 'MS stars')
+    #plt.scatter(filter1_b-filter2_b, filter2_b, color = 'k', marker = '.', alpha = 1, label = 'Non-singular stars')
+    
     plt.plot(iso1-iso2, iso2, color = 'r', label = 'Main Sequence model')
-    #plt.axis([-5, 6, 8.25, 30])
+    plt.axis([-4, 4, 8.25, 27.5])
     plt.title('Color-Magnitude Diagram in Optical Filters')
     plt.xlabel('m${_{606}}$\N{MINUS SIGN}m${_{814}}$' , fontsize=20)
     plt.ylabel('m${_{814}}$', fontsize=20)
@@ -132,17 +152,14 @@ def cmd814(filter1 = df1['data_606'], filter2 = df1['data_814'], filter1_b = df2
 
 
 
+
+
+df3 = sep_prob(df1)
+#print(df3, df4)
+
 plt.clf()
-#cmd275()
-#cmd814()
+#cmd275(filter1 = df3['data_275'], filter2 = df3['data_336'], filter1_b = df4['data_275'], filter2_b=df4['data_336'])
+cmd814(filter1 = df3['data_606'], filter2 = df3['data_814'])
 #binary_hist()
 
-#cdf = stats.binom.cdf
-#plt.plot((ms_delta_opt-ms_delta_UV),cdf((ms_delta_opt-ms_delta_UV)))
-#plt.show()
-
-ttest = stats.ttest_1samp((ms_delta_opt-ms_delta_UV),0)
-
-normalized_arr = preprocessing.normalize([ms_delta_opt-ms_delta_UV])
-#plt.hist(normalized_arr)
-plt.show()
+#print(df3)
