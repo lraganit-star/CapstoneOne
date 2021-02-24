@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 import scipy.stats as stats
+from sklearn import preprocessing
 
 #current steps I'm going to do
 #
@@ -134,6 +135,14 @@ def cmd814(filter1 = df1['data_606'], filter2 = df1['data_814'], filter1_b = df2
 plt.clf()
 #cmd275()
 #cmd814()
-binary_hist()
+#binary_hist()
 
+#cdf = stats.binom.cdf
+#plt.plot((ms_delta_opt-ms_delta_UV),cdf((ms_delta_opt-ms_delta_UV)))
+#plt.show()
 
+ttest = stats.ttest_1samp((ms_delta_opt-ms_delta_UV),0)
+
+normalized_arr = preprocessing.normalize([ms_delta_opt-ms_delta_UV])
+#plt.hist(normalized_arr)
+plt.show()
