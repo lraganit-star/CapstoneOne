@@ -52,11 +52,12 @@ iso_606 = fehm10afep2_ACSWF_points[:,10] +f606
 def hist_prob(x = mem_prob):
     short = [i for i in x if i > 0]
     plt.hist(short, bins = 100)
-    plt.axvline(50, color='k', linestyle='dashed', linewidth=1)
+    plt.axvline(50, color='k', linestyle='dashed', linewidth=1, label = '50% Probability')
     plt.title('Probability of Stars being in 47 Tuc')
-    plt.xlabel('Probability of Star Being a Member', fontsize=20)
-    plt.ylabel('Number of Stars', fontsize=20)
+    plt.xlabel('Probability of Star Being a Member', fontsize=15)
+    plt.ylabel('Number of Stars', fontsize=15)
     plt.yscale('log')
+    plt.legend()
     plt.show()
 
 def sep_members(df):
@@ -137,14 +138,13 @@ def cmd275(filter1 = df1['data_275'], filter2 = df1['data_336'], filter1_b = df2
 def cmd814(filter1 = df1['data_606'], filter2 = df1['data_814'], filter1_b = df2['data_606'], filter2_b = df2['data_814'], iso1 = iso_606, iso2 = iso_814):
     
     plt.clf()
+    #plt.scatter(filter1_b-filter2_b, filter2_b, color = 'grey', marker = '.', alpha = 0.5, label = 'Non-singular stars')
     plt.scatter(filter1-filter2, filter2, color= 'b', marker = '.', alpha = 0.5, label = 'MS stars')
-    #plt.scatter(filter1_b-filter2_b, filter2_b, color = 'k', marker = '.', alpha = 1, label = 'Non-singular stars')
-    
     plt.plot(iso1-iso2, iso2, color = 'r', label = 'Main Sequence model')
-    plt.axis([-4, 4, 8.25, 27.5])
+    plt.axis([-1.5, 3, 9, 25.5])
     plt.title('Color-Magnitude Diagram in Optical Filters')
-    plt.xlabel('m${_{606}}$\N{MINUS SIGN}m${_{814}}$' , fontsize=20)
-    plt.ylabel('m${_{814}}$', fontsize=20)
+    plt.xlabel('m${_{606}}$\N{MINUS SIGN}m${_{814}}$' , fontsize=15)
+    plt.ylabel('m${_{814}}$', fontsize=15)
     plt.gca().invert_yaxis()
     plt.legend()
     plt.show()
@@ -169,6 +169,9 @@ plt.clf()
 #cmd275(filter1 = ult_df['data_275'], filter2 = ult_df['data_336'])
 #cmd814(filter1 = ult_df['data_606'], filter2 = ult_df['data_814'])
 #binary_hist()
+#hist_prob()
+#cmd814()
+cmd275()
 '''
 plt.hist(ms, bins = 100)
 plt.yscale('log')
@@ -177,7 +180,7 @@ plt.ylabel('Amount of Stars')
 plt.show()
 print(stats.ttest_1samp(ms, 0 ))
 #print(df3)
-'''
+
 
 #0.001964187942785832, 0.0027211638632143086
 bs=bootstraps(x = ms)
@@ -189,9 +192,8 @@ plt.legend()
 plt.xlabel('Average from Samples')
 plt.ylabel('Number of Samples')
 plt.title('Bootstrapping')
-plt.show() 
+plt.show()
 
-'''
 mean, sigma = np.mean(mean_list), np.std(mean_list)
 inte = stats.norm.interval(0.95, loc=mean, scale=sigma)
 print(inte)
