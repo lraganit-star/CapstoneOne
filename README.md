@@ -59,7 +59,7 @@ The red line that we see going through the MS is called a Main Sequence Isochron
 ![](images/rm_nonms_UV.png)
 
 
-![](images/clean_ms.png)
+![](images/clean_ms_opt.png)
 
 ## Drumroll Please
 
