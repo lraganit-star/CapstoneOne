@@ -44,6 +44,9 @@ This is an image indicating which stars have been removed due to the probability
 The red line that we see going through the MS is called a Main Sequence Isochrone. This specific isochrone was chosen using the measured metal content of 47 Tuc. However, we still have to account for the distance to 47 Tuc because the measured brightness of stars dimishes the further we are from the light source. Another variable that has to be accounted for is the dust in the Milky Way which causes our stars to appear more red compared to their actual color. Both of these aspects have been taken into account when placing the isochrone. 
 
 
+![](images/iso_UV)
+
+
 ## Only Singles allowed
 
 
