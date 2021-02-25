@@ -123,10 +123,11 @@ def conf_int(op = df1['ms_delta_opt'], uv = df1['ms_delta_UV'], conf = 0.99):
 def cmd275(filter1 = df1['data_275'], filter2 = df1['data_336'], filter1_b = df2['data_275'], filter2_b = df2['data_336'], iso1 = iso_275, iso2 = iso_336):
     
     plt.clf()
-    
+
     plt.scatter(filter1-filter2, filter1, color= 'c', marker = '.', alpha = 0.5, label = 'MS stars')
+    plt.scatter(filter1_b-filter2_b, filter1_b, color = 'k', marker = '.', alpha = 1, label = 'Non-singular stars')
     plt.plot(iso1-iso2, iso1, color = 'r', label = 'Main Sequence Model')
-    #plt.scatter(filter1_b-filter2_b, filter1_b, color = 'k', marker = '.', alpha = 1, label = 'Non-singular stars')
+ 
     plt.axis([-1, 4, 15.5, 25.75])
     plt.gca().invert_yaxis()
     plt.title('Color-Magnitude Diagram in UV Filters')
@@ -138,8 +139,9 @@ def cmd275(filter1 = df1['data_275'], filter2 = df1['data_336'], filter1_b = df2
 def cmd814(filter1 = df1['data_606'], filter2 = df1['data_814'], filter1_b = df2['data_606'], filter2_b = df2['data_814'], iso1 = iso_606, iso2 = iso_814):
     
     plt.clf()
-    plt.scatter(filter1_b-filter2_b, filter2_b, color = 'b', marker = '.', alpha = 0.5)
     plt.scatter(filter1-filter2, filter2, color= 'b', marker = '.', alpha = 0.5, label = 'MS stars')
+    plt.scatter(filter1_b-filter2_b, filter2_b, color = 'k', marker = '.', alpha = 1, label = 'Non-singular stars')
+    
     plt.plot(iso1-iso2, iso2, color = 'r', label = 'Main Sequence model')
     plt.axis([-1.5, 3, 9, 25.5])
     plt.title('Color-Magnitude Diagram in Optical Filters')
@@ -170,8 +172,10 @@ plt.clf()
 #cmd814(filter1 = ult_df['data_606'], filter2 = ult_df['data_814'])
 #binary_hist()
 #hist_prob()
-cmd814()
+#cmd814()
 #cmd275()
+#cmd814(filter1 = df3['data_606'], filter2 = df3['data_814'], filter1_b = df4['data_606'], filter2_b = df4['data_814'])
+cmd275(filter1 = df3['data_275'], filter2 = df3['data_336'], filter1_b = df4['data_275'], filter2_b = df4['data_336'])
 '''
 plt.hist(ms, bins = 100)
 plt.yscale('log')
