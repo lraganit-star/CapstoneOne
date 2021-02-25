@@ -37,14 +37,14 @@ This graph gives us the probability of each star being within 47 Tuc. We had put
 This is an image indicating which stars have been removed due to the probability of these stars being within 47 Tuc being below 50%. We can see that the width of the main sequence is decreased due to these stars taken out. 
 
 
-# Here Come the Isochrones
+## Here Come the Isochrones
 
 
 ![](iso_optical.png)
 The red line that we see going through the MS is called a Main Sequence Isochrone. This specific isochrone was chosen using the measured metal content of 47 Tuc. However, we still have to account for the distance to 47 Tuc because the measured brightness of stars dimishes the further we are from the light source. Another variable that has to be accounted for is the dust in the Milky Way which causes our stars to appear more red compared to their actual color. Both of these aspects have been taken into account when placing the isochrone. 
 
 
-# Is it a Fluke?
+## Drumroll Please
 
 ![](images/final_distance.png)
 
