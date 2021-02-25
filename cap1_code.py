@@ -179,8 +179,20 @@ print(stats.ttest_1samp(ms, 0 ))
 #print(df3)
 '''
 
+#0.001964187942785832, 0.0027211638632143086
 bs=bootstraps(x = ms)
 mean_list = np.mean(bs, axis = 0)
-
+plt.axvline(0.001964187942785832, color='k', linestyle='dashed', linewidth=1, label = 'Confidence interval = 0.95')
+plt.axvline(0.0027211638632143086, color='k', linestyle='dashed', linewidth=1)
 plt.hist(mean_list, bins = 100)
+plt.legend()
+plt.xlabel('Average from Samples')
+plt.ylabel('Number of Samples')
+plt.title('Bootstrapping')
 plt.show() 
+
+'''
+mean, sigma = np.mean(mean_list), np.std(mean_list)
+inte = stats.norm.interval(0.95, loc=mean, scale=sigma)
+print(inte)
+'''
