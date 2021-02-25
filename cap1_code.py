@@ -150,7 +150,13 @@ def cmd814(filter1 = df1['data_606'], filter2 = df1['data_814'], filter1_b = df2
     plt.show()
 
 
+def bootstraps(x, num_bootstrap_samples=10000):
 
+    list_ = []
+    for i in range(0, num_bootstrap_samples):
+        bootstrap = np.random.choice(x, size=num_bootstrap_samples, replace=True)
+        list_.append(bootstrap)
+    return list_
 
 
 
@@ -163,6 +169,7 @@ plt.clf()
 #cmd275(filter1 = ult_df['data_275'], filter2 = ult_df['data_336'])
 #cmd814(filter1 = ult_df['data_606'], filter2 = ult_df['data_814'])
 #binary_hist()
+'''
 plt.hist(ms, bins = 100)
 plt.yscale('log')
 plt.xlabel('Distance From Isochrone')
@@ -170,3 +177,10 @@ plt.ylabel('Amount of Stars')
 plt.show()
 print(stats.ttest_1samp(ms, 0 ))
 #print(df3)
+'''
+
+bs=bootstraps(x = ms)
+mean_list = np.mean(bs, axis = 0)
+
+plt.hist(mean_list, bins = 100)
+plt.show() 

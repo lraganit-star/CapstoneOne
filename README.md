@@ -20,7 +20,7 @@ One of these GCs is 47 Tuc, also known as NGC 104. It is a massive GC that could
 ![](CMD_optical.png)	
 
 
-This is a Color-Magnitude Diagram. Every star that every gets measured by any telescope will eventually end up on here. The evolutionary cycle of stars has been studied for a long time now and depending on the mass of the star, we can predict how these stars move throughout the HR diagram as they age. Each star starts its life on the main sequence. The mass of the star determines the lifetime of a star on the main sequence. Which is why we'll be focusing on the main sequence. 
+This is a Color-Magnitude Diagram (CMD). Every star that every gets measured by any telescope will eventually end up on here. The evolutionary cycle of stars has been studied for a long time now and depending on the mass of the star, we can predict how these stars move throughout the HR diagram as they age. Each star starts its life on the main sequence (MS). The mass of the star determines the lifetime of a star on the main sequence. Which is why we'll be focusing on the main sequence. 
 
 
 ![](membership.png)
@@ -38,6 +38,7 @@ This is an image indicating which stars have been removed due to the probability
 # Here Come the Isochrones
 
 ![](iso_optical.png)
+The red line that we see going through the MS is called a Main Sequence Isochrone. This specific isochrone was chosen using the measured metal content of 47 Tuc. However, we still have to account for the distance to 47 Tuc because the measured brightness of stars dimishes the further we are from the light source. Another variable that has to be accounted for is the dust in the Milky Way which causes our stars to appear more red compared to their actual color. Both of these aspects have been taken into account when placing the isochrone. 
 
 
 # Is it a Fluke?
