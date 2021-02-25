@@ -5,23 +5,16 @@ import scipy.stats as stats
 
 #current steps I'm going to do
 #
-#clean out non ms stars(binaries, wd, etc.)
-### use stats to determine probability of each star is binary or not
 #
 # determine interval that causes the error within hubble
 ### use MS isochroners to determine where MS should be and compare from there
+### bootstrap to see what happens, use the CLT , the distribution doesn't matter
 
 # if there's still time
 # compare ages of stars, luminosity between different types of stars
 # maybe use the other data set? (hugs)
 # see if F425 has any cool stuff
 # look at other categories
-
-#So we did this, but the order of the values in the list are different now
-#maybe see if theres a way to use numpy/pandas methods to do this
-#all of the zeroes are at the end
-#If we cannot get the np/pd array to work, then make sure to remove the values that are too high by their actual numbers
-
 
 data_275, data_336, id_s, data_606, data_814, dx, dy = np.loadtxt('/Users/distantbeliefs/Cool/LESLIE/47tuc/hlsp_gcuvleg_hst_wfc3-uvis_ngc0104_v1_catalogue.txt', usecols = [2,3,17,20,21,24,25], unpack = True)
 id_b = np.loadtxt('data/hlsp_hugs_hst_wfc3-uvis-acs-wfc_ngc0104_multi_v1_catalog-meth1.txt', dtype = str, usecols = 35)
