@@ -81,7 +81,6 @@ def ms_difference(lst1 = iso_606, lst2 = iso_814, data1 = df1['data_606'], data2
     data_lst = data1-data2
     
     lst = []
-
     for data in data_lst:
         idx = (np.abs(iso_lst - data)).argmin()
         lst.append(np.linalg.norm(iso_lst[idx] - data))
@@ -96,10 +95,17 @@ df1['opt-UV'] = df1['ms_delta_opt']- df1['ms_delta_UV']
 
 
 def sep_prob(df = df1):
-    df_g = df.loc[~((df['opt-UV'] < -0.2817938716083204) & (df['opt-UV']> 0.24665511360750217))].reset_index(drop=True)
-    #df_b = df.loc[~((df['opt-UV'] > -0.2817938716083204) & (df['opt-UV']< 0.24665511360750217))].reset_index(drop=True)
-    return df_g
 
+    df_b = df.loc[~((df['opt-UV'] > -0.2817938716083204) & (df['opt-UV']< 0.24665511360750217))].reset_index(drop=True)
+    df_g = df.loc[~((df['opt-UV'] < -0.2817938716083204) & (df['opt-UV']> 0.24665511360750217))].reset_index(drop=True)
+    return df_g, df_b
+
+
+df3, df4 = sep_prob()
+def final_df(df_g = df3, df_b = df4):
+    cond = df_g['opt-UV'].isin(df_b['opt-UV'])
+    df_g.drop(df_g[cond].index, inplace = True)
+    return df_g
 
 def binary_hist(opt = df1['ms_delta_opt'], uv = df1['ms_delta_UV']):
     plt.hist((opt-uv), bins = 100)
@@ -154,12 +160,20 @@ def cmd814(filter1 = df1['data_606'], filter2 = df1['data_814'], filter1_b = df2
 
 
 
-df3 = sep_prob(df1)
-#print(df3, df4)
+
+
+ult_df = final_df()
+ms = ms_difference(data1 = ult_df['data_606'], data2 = ult_df['data_814'])
+
 
 plt.clf()
-#cmd275(filter1 = df3['data_275'], filter2 = df3['data_336'], filter1_b = df4['data_275'], filter2_b=df4['data_336'])
-cmd814(filter1 = df3['data_606'], filter2 = df3['data_814'])
+#cmd275(filter1 = ult_df['data_275'], filter2 = ult_df['data_336'])
+#cmd814(filter1 = ult_df['data_606'], filter2 = ult_df['data_814'])
 #binary_hist()
-
+plt.hist(ms, bins = 100)
+plt.yscale('log')
+plt.xlabel('Distance From Isochrone')
+plt.ylabel('Amount of Stars')
+plt.show()
+print(stats.ttest_1samp(ms, 0 ))
 #print(df3)

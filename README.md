@@ -40,3 +40,8 @@ This is an image indicating which stars have been removed due to the probability
 ![](iso_optical.png)
 
 
+# Is it a Fluke?
+
+![](final_distance.png)
+
+pvalue=1.6614302003444622e-48
