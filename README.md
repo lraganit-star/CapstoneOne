@@ -1,5 +1,6 @@
 # Cleaning the Galaxy
 
+
 ## Introduction
 
 
@@ -10,6 +11,8 @@ One of these GCs is 47 Tuc, also known as NGC 104. It is a massive GC that could
 
 
 ## Objectives
+
+
 ~ Removing stars that are not within 47 Tuc
 
 ~ Using MS isochrones, reduce the amount of non-singular, non-MS stars
@@ -18,6 +21,7 @@ One of these GCs is 47 Tuc, also known as NGC 104. It is a massive GC that could
 
 
 ## You Can't Sit With Us
+
 
 ![](images/CMD_optical.png)	
 
@@ -41,6 +45,8 @@ This is an image indicating which stars have been removed due to the probability
 
 
 ![](images/iso_optical.png)
+
+
 The red line that we see going through the MS is called a Main Sequence Isochrone. This specific isochrone was chosen using the measured metal content of 47 Tuc. However, we still have to account for the distance to 47 Tuc because the measured brightness of stars dimishes the further we are from the light source. Another variable that has to be accounted for is the dust in the Milky Way which causes our stars to appear more red compared to their actual color. Both of these aspects have been taken into account when placing the isochrone. 
 
 
@@ -59,9 +65,11 @@ The red line that we see going through the MS is called a Main Sequence Isochron
 ![](images/rm_nonms_UV.png)
 
 
+## Drumroll Please
+
+
 ![](images/clean_ms_opt.png)
 
-## Drumroll Please
 
 ![](images/final_distance.png)
 
@@ -73,5 +81,6 @@ In order to get this graph, what I had done was to get the shortest distance fro
 
 
 ![](images/bootstrapping.png)
+
 
 In order to determine if there's any significance to the previous graph, we bootstrapped the data since plotting the distances from the isochrone doesn't have a normal distribution. This bootstrapping technique allows us to use the Central Limit Theorem to determine an interval where the mean will lie within a 95% confidence interval. In our case, our confidence interval is in between (0.0019, 0.0027). Although this is statistically significant to where it shows that Hubble does have an internal error, this interval is not meaningfully significant because these values are so low, this amount of error in the magnitude and colors will not change how we evaluate these stars.
