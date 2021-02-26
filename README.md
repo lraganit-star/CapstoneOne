@@ -60,7 +60,11 @@ Up to this point, we've been only using the optical CMDs, but I'm going to intro
 
 
 ![](images/delta_99.png)
+
+
 This diagram has quite a bit going on in it. What I had one was that I had gotten the distance from every star to the MS isochrone in the optical filters, I had then taken the distance of these stars to the isochrones in the UV filters and subtracted these two from one another. Now, this might sound a little confusing, so let me take it step by step. 
+
+
 
 
 1. Distance to Isochrone in Optical and UV filters
@@ -71,6 +75,8 @@ In order to get this distance, we're going to get the shortest euclidean distanc
 2. Subtraction of Distance for both filters
 
 Subtracting the euclidean distance of the stars in the optical filter from the euclidean distance of the stars in the UV filter will show us how much the light changes from one star to another. If the star is a singular MS star, the star wouldn't move much from one filter to another, so we are expecting this value to be close to zero. But if there is a binary star (we're using the assumption that this binary is going to be a MS star and a hotter star, a WD for example), the star will move a lot compared to the optical filter in the UV filter. In the UV filter, the star will move further away from the MS. 
+
+
 
 
 The stars that are out of our 99% interval will be removed because relative to the other stars in our data set, they would have moved a lot more in comparison. 
@@ -92,6 +98,9 @@ We can further see the black stars being far from the MS, similar to that in the
 
 
 ![](images/clean_ms_opt.png)
+
+
+And here we go! I very clean CMD of the MS branch. There are still a few stars that are scattered around the MS, but I had only taken into account two factors when cleaning (foreground stars and MS-WD binaries). If more factors were taken into account, for example MS-MS binaries, then the CMD would be even more cleaned up and give us an even tighter boundary for the bootstrapping we're going to do.
 
 
 ![](images/final_distance.png)
