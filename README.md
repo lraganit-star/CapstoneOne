@@ -53,11 +53,18 @@ The red line that we see going through the MS is called a Main Sequence Isochron
 ![](images/iso_UV.png)
 
 
+Up to this point, we've been only using the optical CMDs, but I'm going to introduce the UV CMD. The different filters that are being introduced is going to help us know more information about these stars. In our circumstance that is going to be looked at in the next section, we're going to see if any of these individual main sequence stars are actually part of a multi-star system. 
+
+
 ## Only Singles allowed
 
 
 ![](images/delta_99.png)
+This diagram has quite a bit going on in it. What I had one was that I had gotten the distance from every star to the MS isochrone in the optical filters, I had then taken the distance of these stars to the isochrones in the UV filters and subtracted these two from one another. Now, this might sound a little confusing, so let me take it step by step. 
 
+
+1.) Distance to Isochrone in Optical filter
+This distance is going to help us in the last section, but for now, 
 
 ![](images/rm_nonms_opt.png)
 
