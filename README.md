@@ -74,6 +74,7 @@ In order to get this distance, we're going to get the shortest euclidean distanc
 
 2. Subtraction of Distance for both filters
 
+
 Subtracting the euclidean distance of the stars in the optical filter from the euclidean distance of the stars in the UV filter will show us how much the light changes from one star to another. If the star is a singular MS star, the star wouldn't move much from one filter to another, so we are expecting this value to be close to zero. But if there is a binary star (we're using the assumption that this binary is going to be a MS star and a hotter star, a WD for example), the star will move a lot compared to the optical filter in the UV filter. In the UV filter, the star will move further away from the MS. 
 
 
