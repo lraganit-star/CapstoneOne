@@ -47,7 +47,7 @@ This is an image indicating which stars have been removed due to the probability
 ![](images/iso_optical.png)
 
 
-The red line that we see going through the MS is called a Main Sequence Isochrone. This specific isochrone was chosen using the measured metal content of 47 Tuc. However, we still have to account for the distance to 47 Tuc because the measured brightness of stars dimishes the further we are from the light source. Another variable that has to be accounted for is the dust in the Milky Way which causes our stars to appear more red compared to their actual color. Both of these aspects have been taken into account when placing the isochrone. 
+The red line that we see going through the MS is called a Main Sequence Isochrone. This specific isochrone was chosen using the measured metal content of 47 Tuc. However, we still have to account for the distance to 47 Tuc because the measured brightness of stars dimishes the further we are from the light source. Another variable that has to be accounted for is the dust in the Milky Way which causes our stars to appear more red compared to their actual color ([Fe/H] = −0.79 ± 0.09 and alpha enhancement of [α/Fe] = 0.29 ± 0.06 (Cordero et al. 2013)). Both of these aspects have been taken into account when placing the isochrone. 
 
 
 ![](images/iso_UV.png)
@@ -75,8 +75,6 @@ In order to get this distance, we're going to get the shortest euclidean distanc
 2. Subtraction of Distance for both filters
 
 Subtracting the euclidean distance of the stars in the optical filter from the euclidean distance of the stars in the UV filter will show us how much the light changes from one star to another. If the star is a singular MS star, the star wouldn't move much from one filter to another, so we are expecting this value to be close to zero. But if there is a binary star (we're using the assumption that this binary is going to be a MS star and a hotter star, a WD for example), the star will move a lot compared to the optical filter in the UV filter. In the UV filter, the star will move further away from the MS. 
-
-
 
 
 The stars that are out of our 99% interval will be removed because relative to the other stars in our data set, they would have moved a lot more in comparison. 
@@ -116,3 +114,16 @@ In order to get this graph, what I had done was to get the shortest distance fro
 
 
 In order to determine if there's any significance to the previous graph, we bootstrapped the data since plotting the distances from the isochrone doesn't have a normal distribution. This bootstrapping technique allows us to use the Central Limit Theorem to determine an interval where the mean will lie within a 95% confidence interval. In our case, our confidence interval is in between (0.0019, 0.0027). Although this is statistically significant to where it shows that Hubble does have an internal error, this interval is not meaningfully significant because these values are so low, this amount of error in the magnitude and colors will not change how we evaluate these stars.
+
+
+## Sources 
+
+Nardiello et al. (2018) 
+Piotto et al. 2015, AJ, 149, 91 
+Cordero et al. 2013, ApJ, 154, 1
+
+
+Datasets used 
+GO-9443 (PI:King), GO-9281 (PI:Grindlay), GO-10775 (PI:Sarajedini)
+GO-11729 (PI: Holtzman), GO-12971 (PI: Richer), GO-12311 (PI:Piotto)
+Dotter, A. 2015, ApJ 222, 8
